@@ -68,7 +68,7 @@ http://v.qq.com/page/p/i/f/p0190ygfcif.html
 第十二课：文件操作二
 http://v.qq.com/page/s/i/h/s0190c2ssih.html
 
-第十三课：文件操作二
+第十三课：nodejs静态服务器
 http://v.qq.com/page/s/b/4/s0191529nb4.html
 
 持续更新，后续视频还在上传中
