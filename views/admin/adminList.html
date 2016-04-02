@@ -1,0 +1,45 @@
+<style type="text" id="adminList">
+<div class="panel panel-primary adminList page">
+    <div class="panel-heading">用户列表<span class="glyphicon glyphicon-plus pull-right"></span></div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>用户名</th>
+          <th>超级管理员</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(function( user ){ %>
+           	  <tr>
+           	  	<td><%= user.aid%></td>
+           	  	<td><%= user.aname%></td>
+           	  	<td><%= user.issuper ? '否' : '是' %></td>
+           	  	<td><span class="glyphicon glyphicon-trash" uid="<%= user.aid%>" ></span></td>
+           	  </tr>
+        <% }) %>
+      </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+	$(function(){
+		//增加会员
+		$("#main .adminList .glyphicon-plus").click(function(){
+			var html = ejs.render( $("#adminAdd").html() );
+			$.pageChange( html );
+		});
+		
+		//删除会员
+		$("#main .adminList .glyphicon-trash").click(function(){
+			M.adminDel({"uid":$(this).attr("uid")}).done(function( obj ){
+				if( obj.code ) {
+					M.adminList();
+				} else {
+					$.modal("提示",obj.message);
+				}
+			});
+		});
+	});
+</script>
+</style>

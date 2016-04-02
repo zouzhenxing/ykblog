@@ -1,0 +1,71 @@
+<style type="text" id="newsList">
+<div class="newsList page">
+
+<div class="row">
+<div class="col-md-4">
+	<input type="text" class="form-control" placeholder=".col-md-4">
+</div>
+<div class="col-md-4">
+	<input type="text" class="form-control" placeholder=".col-md-4">
+</div>
+<div class="col-md-4">
+	<input type="text" class="form-control" placeholder=".col-md-4">
+</div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">资讯列表<span class="glyphicon glyphicon-plus pull-right"></span></div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>标题</th>
+          <th>作者</th>
+          <th>日期</th>
+          <th>类型</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% page.data.forEach(function( newsItem ){ %>
+           	  <tr>
+           	  	<td><%= newsItem.nid %></td>
+           	  	<td><%= newsItem.ntitle %></td>
+           	  	<td><%= newsItem.aname %></td>
+           	  	<td><%= newsItem.addtime %></td>
+           	  	<td><%= newsItem.tname %></td>
+           	  	<td><span class="glyphicon glyphicon-trash" nid="<%= newsItem.nid %>" ></span></td>
+           	  </tr>
+        <% }) %>
+      </tbody>
+    </table>
+</div>
+<ul class="pagination">
+    <li data-curpage="<%= page.curPage - 1 <= 0 ? 1 : page.curPage - 1  %>" class="<%= page.curPage == 1 ? 'disabled' : 'active' %>" ><a href="#">上一页</a></li>
+    <% for( var i = 1;i <= page.totalPage;i++ ) { %>
+    	<li data-curpage="<%= i %>" class='<%= page.curPage == i ? 'active' : "" %>'><a href="#"><%= i %></a></li>
+    <% } %>        
+    <li data-curpage="<%= parseInt(page.curPage) + 1 >= page.totalPage ? page.totalPage : parseInt(page.curPage) + 1 %>" class="<%= page.curPage >= page.totalPage ? 'disabled' : 'active' %>" ><a href="#">下一页</a></li>
+</ul>
+</div>
+<script type="text/javascript">
+	$(function(){
+		//进入增加资讯
+		$("#main .newsList .glyphicon-plus").click(function(){
+			M.getNewType().done(function( types ) {
+				var html = ejs.render( $("#newsAdd").html(),{types:types} );
+				$.pageChange( html );
+			});
+		});
+		
+		//分页
+		$("#main .newsList .pagination li:not(.disabled)").click(function() {
+			M.newsList({"curPage":$(this).data("curpage")});
+		});
+		
+		//删除资讯
+		$("#main .adminList .glyphicon-trash").click(function(){
+		});
+	});
+</script>
+</style>

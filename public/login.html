@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>源酷博客登录</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="bookmark" href="favicon.ico"/>
+    <link rel="stylesheet" href="css/site.min.css">
+    	
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="js/site.min.js"></script>
+    <script src="js/yuanku.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+      body {
+      	padding-top: 50px;
+      	padding-bottom: 50px;
+        background-color: #303641;
+        color: #C1C3C6
+      }
+    </style>
+    <script type="text/javascript">
+	    $(function(){
+		    $("#loginbtn").click(function(){
+		    	  var uname = $("#username").val();
+		    	  var pwd = $("#password").val();
+		    	  
+		    		if( $.validate.isEmpty( uname ) == false ) {
+		    			  $("#errorinfo").alert("warning","邮箱不能为空!",2);
+		    			  return;
+		    		}
+		    		
+		    		if( $.validate.isEmail( uname ) == false ) {
+		    			$("#errorinfo").alert("warning","邮箱格式不正确!",2);
+		    			return;
+		    		}
+		    		
+		    		if( $.validate.isEmpty( pwd ) == false ) {
+		    			$("#errorinfo").alert("warning","密码不能为空!",2);
+		    			return;
+		    		}
+		    		
+		    		$.yk_ajax({
+		    			type:"post",
+		    			url:"/login",
+		    			data:{"uname":uname,"pwd":pwd},
+		    			dataType : "json",
+		    			success : function( obj ) {
+		    				if( obj.code ) {
+		    					if( $("#remember").is(":checked") ) {
+		    							localStorage.setItem("uname",uname);
+		    							localStorage.setItem("pwd",pwd);
+		    					}
+		    					//跳转到后台页面
+		    					window.location.href = "/admin/admin/index"
+		    				} else {
+		    					//是示错误提示
+		    					$("#errorinfo").alert( "error",obj.message,2 );
+		    				}
+		    			}
+		    		});
+		    });
+		    
+		    $("#username").val( localStorage.getItem("uname") );
+		    $("#password").val( localStorage.getItem("pwd") );
+	    });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-signin">
+        <h3 class="form-signin-heading">请登录</h3>
+        
+        <div class="form-group" id="errorinfo">
+        </div>
+        
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="glyphicon glyphicon-user"></i>
+            </div>
+            <input type="text" class="form-control" name="username" id="username" placeholder="邮箱" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class=" glyphicon glyphicon-lock "></i>
+            </div>
+            <input type="password" class="form-control" name="password" id="password" placeholder="密码" autocomplete="off" />
+          </div>
+        </div>
+        
+        <label class="checkbox">
+          <input type="checkbox" id="remember" value="remember-me"> &nbsp; 记住我
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" id="loginbtn">登&nbsp;录</button>
+      </div>
+    </div>
+  </body>
+</html>

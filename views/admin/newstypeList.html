@@ -1,0 +1,35 @@
+<style type="text" id="newstypeList">
+<div class="panel panel-primary newstypeList page">
+    <div class="panel-heading">新闻列表<span class="glyphicon glyphicon-plus pull-right"></span></div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>类型名</th>
+          <th>父节点</th>
+          <th>排序</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% news.forEach(function( news ){ %>
+           	  <tr>
+           	  	<td><%= news.typeid %></td>
+           	  	<td><%= news.typename %></td>
+           	  	<td><%= news.ptype %></td>
+           	  	<td><%= news.typeorder %></td>
+           	  	<td><span class="glyphicon glyphicon-trash" uid="<%= news.typeid %>" ></span></td>
+           	  </tr>
+        <% }) %>
+      </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$("#main .newstypeList .glyphicon-plus").click(function(){
+			var html = ejs.render($("#newtypeAdd").html())
+			$.pageChange(html);
+		});
+	})
+</script>
+</style>

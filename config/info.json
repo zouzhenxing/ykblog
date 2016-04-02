@@ -1,0 +1,13 @@
+{
+	"error" : {
+		"loginerror" : {"code":0,"message":"用户名或密码错误!"},
+		"adminAdderror" : {"code":0,"message":"增加用户失败,请稍后重试!"},
+		"checkAdminUser" : {"code":0,"message":"邮箱已存在,请重新输入!"},
+		"adminDel" : {"code":0,"message":"会员删除失败!"},
+		"newtypeAddError" : {"code":0,"message":"增加新闻类型失败,请稍后重试!"},
+		"newsAddError" : {"code":0,"message":"增加资讯失败，请稍后重试!"}
+	},
+	"message" : {
+		"success" : {"code":1}
+	}
+}

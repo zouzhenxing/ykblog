@@ -1,0 +1,65 @@
+<style type="text" id="adminAdd">
+	<div class="panel panel-primary adminAdd page">
+        <div class="panel-heading">增加用户</div>
+        <div class="panel-body">
+          <div class="form-horizontal">
+          	<div class="form-group ">
+          		<label class="col-md-2 control-label"></label>
+	            <div class="col-md-10 errorinfo"></div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">用户名：</label>
+              <div class="col-md-10">
+                <input type="text" required="" placeholder="用户名" class="form-control input-sm" name="aname">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">密码：</label>
+              <div class="col-md-10">
+                <input type="text" required="" placeholder="密码" class="form-control input-sm" name="pwd">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-primary btn-block addbtn">增加</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    	$(function(){
+			$("#main .adminAdd .addbtn").click(function(){
+				var aname = $("#main .adminAdd input[name=aname]");
+				var pwd = $("#main .adminAdd input[name=pwd]");
+				
+				if( $.validate.isEmpty( aname.val() ) == false ) {
+					$("#main .adminAdd .errorinfo").alert("warning","用户名不能为空!",2);
+					return;
+				}
+				if( $.validate.isEmail( aname.val() ) == false ) {
+					$("#main .adminAdd .errorinfo").alert("warning","用户名格式不正确!",2);
+					return;
+				}
+				if( $.validate.isEmpty( pwd.val() ) == false ) {
+					$("#main .adminAdd .errorinfo").alert("warning","密码不能为空!",2);
+					return;
+				}
+				
+				M.checkAdminUser( {"aname":aname.val()} ).done(function( obj ) {
+					if( obj.code ) {
+						M.adminAdd({"aname":aname.val(),"pwd":pwd.val()}).done(function( obj ) {
+							if( obj.code ) {
+								M.adminList();
+							} else {
+								$("#main .adminAdd .errorinfo").alert("error",obj.message,2);
+							}
+						});
+					} else {
+						$("#main .adminAdd .errorinfo").alert("error",obj.message,2);
+					}
+				});
+			});
+		});
+    </script>
+</style>

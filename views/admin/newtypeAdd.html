@@ -1,0 +1,44 @@
+<style type="text" id="newtypeAdd">
+	<div class="panel panel-primary newtypeAdd page">
+        <div class="panel-heading">增加新闻类型</div>
+        <div class="panel-body">
+          <div class="form-horizontal">
+          	<div class="form-group ">
+          		<label class="col-md-2 control-label"></label>
+	            <div class="col-md-10 errorinfo"></div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">类型名：</label>
+              <div class="col-md-10">
+                <input type="text" required="" placeholder="类型名" class="form-control input-sm" name="typename">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-primary btn-block addbtn">增加</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    	$(function(){
+			$("#main .newtypeAdd .addbtn").click(function(){
+				var typename = $("#main .newtypeAdd input[name=typename]").val();
+				
+				if( $.validate.isEmpty(typename) == false ) {
+					$("#main .newtypeAdd .errorinfo").alert("warning","类型名称不能为空!");
+					return;
+				}
+				
+				M.newtypeAdd({"typename":typename}).done(function( obj ){
+					if( obj.code ) {
+						M.newtypeList();
+					} else {
+						$("#main .newtypeAdd .errorinfo").alert("error",obj.message,2);
+					}
+				});
+			});
+		})
+    </script>
+</style>

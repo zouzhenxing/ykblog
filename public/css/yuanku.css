@@ -1,0 +1,65 @@
+.pt-page-rotateCarouselBottomIn {
+	-webkit-transform-origin: 50% 100%;
+	transform-origin: 50% 100%;
+	-webkit-animation: rotateCarouselBottomIn .8s both ease;
+	animation: rotateCarouselBottomIn .8s both ease;
+}
+.pt-page-rotateCarouselBottomOut {
+	-webkit-transform-origin: 50% 0%;
+	transform-origin: 50% 0%;
+	-webkit-animation: rotateCarouselBottomOut .8s both ease;
+	animation: rotateCarouselBottomOut .8s both ease;
+}
+@-webkit-keyframes rotateCarouselBottomOut {
+	from { }
+	to { opacity: .3; -webkit-transform: translateY(200%) scale(.4) rotateX(-65deg); }
+}
+@keyframes rotateCarouselBottomOut {
+	from { }
+	to { opacity: .3; -webkit-transform: translateY(200%) scale(.4) rotateX(-65deg); transform: translateY(200%) scale(.4) rotateX(-65deg); }
+}
+
+@-webkit-keyframes rotateCarouselBottomIn {
+	from { opacity: .3; -webkit-transform: translateY(-200%) scale(.4) rotateX(65deg); }
+}
+@keyframes rotateCarouselBottomIn {
+	from { opacity: .3; -webkit-transform: translateY(-200%) scale(.4) rotateX(65deg); transform: translateY(-200%) scale(.4) rotateX(65deg); }
+}
+
+/**loding~~~~~**/
+.caseMarron {
+  background-color : #434A54;
+  height : 140px;
+  width : 150px;
+  padding-top : 10px;
+  float : left;
+  position : absolute;
+  left: 50%;
+  top: 50%;
+  display: none;
+}
+/****DEBUT BOULE****/
+.boule {
+  height : 10px;
+  width : 10px;
+  position : absolute;
+  top : 80px;
+  left : 10px;
+  background-color : #3c763d;
+  border-radius : 50%;
+  animation : boule 2s infinite;
+  -webkit-animation : boule 2s infinite;
+}
+
+@keyframes boule {
+  0% {left : 10px;opacity : 0;}
+  50% {height : 20px; width : 20px; opacity : 1;}
+  100% {left : 120px; opacity : 0; height : 10px; width : 10px;}
+}
+
+@-webkit-keyframes boule {
+  0% {left : 10px;opacity : 0;}
+  50% {height : 20px; width : 20px; opacity : 1;}
+  100% {left : 120px; opacity : 0; height : 10px; width : 10px;}
+}
+/****FIN BOULE****/

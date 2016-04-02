@@ -22,8 +22,10 @@
   "homepage": "https://github.com/zouzhenxing/ykblog#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
+    "log4js": "^0.6.33",
     "mysql": "^2.10.2"
   }
 }
