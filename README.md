@@ -8,6 +8,7 @@
 
 #**HTML部分**
 万丈高楼平地起，别看简单的HTML，其实有很多你是不知道的。
+
 第一课：[HTML基础]
 (http://v.qq.com/page/j/5/o/j01854r0n5o.html)
 
@@ -29,8 +30,16 @@
 第七课：[CSS基础]
 (http://v.qq.com/page/e/u/x/e01894ypeux.html)
 
+第八课：[网页前端之css样式篇1]
+(http://v.qq.com/page/u/a/6/u0190lwt5a6.html)
+
+第九课：[网页前端之css样式篇2]
+(http://v.qq.com/page/k/i/q/k01903mlkiq.html)
+
+
 #**JavaScript部分**
 想学NodeJS?先学JS，都是JS，不要分前端后台！大神的任务是搞概念，码农的任务是写代码，大家说好的。
+
 第一课：[JS复习]
 (http://v.qq.com/page/g/s/x/g0184glwhsx.html)
 
