@@ -49,6 +49,7 @@ app.use("/login",require("./router/loginRouter.js"));
 app.use("/admin",util.checkLogin); //使用中间件过滤所有admin下的请求，只有登录后才可以进入
 app.use("/admin/admin",require("./router/adminRouter.js"));
 app.use("/admin/news",require("./router/newsRouter.js"));
+app.use("/API",require("./router/apiRouter.js"));
 
 //设置静态目录
 app.use(express.static('public'));

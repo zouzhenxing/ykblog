@@ -4,7 +4,7 @@ newsModule.prototype.newstypeList = function(){
 	var emitter = new events.EventEmitter();
 	
 	dataSource.getConn().on("success",function( conn ){
-		conn.query("select * from newtype order by typeorder",function( err,rows,fields ) {
+		conn.query("select *,(select count(*) from news n where n.typeid = nt.typeid) as newcount from newtype nt order by typeorder",function( err,rows,fields ) {
 			if( err ) {
 				return emitter.emit("error",err);
 			}
@@ -67,6 +67,48 @@ newsModule.prototype.newsAdd = function( ntitle,aid,ncontnet,typeid ){
 	var sql = "insert into news values(default,?,?,now(),?,?)";
 	dataSource.getConn().on("success",function( conn ){
 		var query = conn.query(sql,[ntitle,aid,ncontnet,typeid],function( err,rows,fields ) {
+			if( err ) {
+				return emitter.emit("error",err);
+			}
+			
+			emitter.emit("success",rows,fields);
+			conn.release(); //归还数据库连接到连接池
+		});
+		
+	}).on("error",function( err ) {
+		emitter.emit("error",err);
+	});
+	
+	return emitter;
+}
+
+newsModule.prototype.getNewsByTid = function( tid ){
+	var emitter = new events.EventEmitter();
+	
+	var sql = "select * from news where typeid = ?";
+	dataSource.getConn().on("success",function( conn ){
+		var query = conn.query(sql,[ tid ],function( err,rows,fields ) {
+			if( err ) {
+				return emitter.emit("error",err);
+			}
+			
+			emitter.emit("success",rows,fields);
+			conn.release(); //归还数据库连接到连接池
+		});
+		
+	}).on("error",function( err ) {
+		emitter.emit("error",err);
+	});
+	
+	return emitter;
+}
+
+newsModule.prototype.getNewByNid = function( nid ){
+	var emitter = new events.EventEmitter();
+	
+	var sql = "select * from news where nid = ?";
+	dataSource.getConn().on("success",function( conn ){
+		var query = conn.query(sql,[ nid ],function( err,rows,fields ) {
 			if( err ) {
 				return emitter.emit("error",err);
 			}
