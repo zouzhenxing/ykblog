@@ -52,3 +52,30 @@ create table newtype
    primary key (typeid)
 );
 
+drop table if exists photos;
+
+/*==============================================================*/
+/* Table: photos                                                */
+/*==============================================================*/
+create table photos
+(
+   pid                  int not null auto_increment,
+   pname                varchar(50),
+   addtime              datetime,
+   primary key (pid)
+);
+
+drop table if exists images;
+
+/*==============================================================*/
+/* Table: images                                                */
+/*==============================================================*/
+create table images
+(
+   imgid                int not null auto_increment,
+   imgname              varchar(500),
+   imgurl               varchar(100),
+   addtime              datetime,
+   pid                  int,
+   primary key (imgid)
+);

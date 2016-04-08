@@ -18,6 +18,9 @@
 	    <script src="/js/yuanku.js" type="text/javascript" charset="utf-8"></script>
 	    <script src="/js/bootstrap-wysiwyg.js" type="text/javascript" charset="utf-8"></script>
 	    <script src="/js/jquery.hotkeys.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="/js/jquery.ui.widget.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="/js/jquery.iframe-transport.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="/js/jquery.fileupload.js" type="text/javascript" charset="utf-8"></script>
 	    <script type="text/javascript">
 	    	$(function(){
 				$(".list-group a").click(function(){
@@ -62,7 +65,7 @@
 		                <li class="list-group-item"><a href="#" data-route = "newtypeList"><i class="glyphicon glyphicon-tasks"></i><b>资讯分类</b></a></li>
 		                <li class="list-group-item"><a href="#" data-route = "newsList"><i class="glyphicon glyphicon-book"></i><b>资讯管理</b></a></li>
 		                <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-th"></i><b>相册管理</b></a></li>
-		                <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-camera"></i><b>图片管理</b></a></li>
+		                <li class="list-group-item"><a href="#" data-route = "imgAdd"><i class="glyphicon glyphicon-camera"></i><b>图片管理</b></a></li>
 		            </ul>
 	          	</div>
 	          	
@@ -103,5 +106,6 @@
       	<$- include newtypeAdd.html -$>
       	<$- include newsList.html -$>
       	<$- include newsAdd.html -$>
+      	<$- include imgAdd.html -$>
 	</body>
 </html>

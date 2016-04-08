@@ -1,0 +1,66 @@
+<style type="text" id="imgAdd">
+	<div class="panel panel-primary imgAdd page">
+        <div class="panel-heading">增加图片</div>
+        <div class="panel-body">
+          <form class="form-horizontal" action="/upfiles" method="post" enctype="multipart/form-data" target="formsub">
+          	<div class="form-group ">
+          		<label class="col-md-2 control-label"></label>
+	            <div class="col-md-10 errorinfo"></div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">选择图片：</label>
+              <div class="col-md-10">
+                <input id="fileupload" type="file" data-url="/upfiles" multiple placeholder="选择图片" class="form-control input-sm" name="upfile[]">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary btn-block addbtn">增加</button>
+              </div>
+            </div>
+          </form>
+          <iframe name="formsub" style="display:none;"></iframe>
+        </div>
+    </div>
+    <script type="text/javascript">
+		$(function() {
+			$("#fileupload").on("change",function(){
+				var files = $(this).get(0).files;
+				for(var i = 0;i < files.length;i++) {
+					var file = files.item(i);
+					
+					var read = new FileReader();
+					read.readAsDataURL(file);
+					read.onload = function( e ) {
+						$("#main .imgAdd").append("<img src='" + this.result + "' style='width:100px;'/>");
+					}
+				}
+			});
+			
+			$("#main .imgAdd .form-horizontal").on('submit',function( event ){
+				var files = document.getElementById("fileupload").files;
+				//只能上传jpeg png gif的图片
+				//大小只能小于1M
+				var reg = /^image\//;
+				for(var i = 0;i < files.length;i++) {
+					var file = files.item(i);
+					if( reg.test(file.type) == false ) {
+						$("#main .imgAdd .errorinfo").alert("warning","只能上传图片!",2);
+						event.preventDefault();
+						return;
+					}
+					
+					if( file.size > 1024 *1024 ) {
+						$("#main .imgAdd .errorinfo").alert("warning","只能上传小于1M的图片!",2);
+						event.preventDefault();
+						return;
+					}
+				}
+			});
+		})
+		function upfileSuccess( urls ) {
+			$("#main .imgAdd .errorinfo").html(urls);
+			$("#fileupload").val();
+		}
+	</script>
+</style>

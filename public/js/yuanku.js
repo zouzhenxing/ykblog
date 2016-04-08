@@ -103,7 +103,6 @@
 			dataType : "json",
 			data : data
 		}).done(function( page ) {
-			console.log(page.curPage,page.totalPage);
 			var html = ejs.render( $("#newsList").html(),{ page:page } );
 			$.pageChange(html,".newsList");
 		});
@@ -160,5 +159,10 @@
 			data : data,
 			dataType : "json"
 		});
+	}
+	
+	M.imgAdd = function() {
+		var html = ejs.render( $("#imgAdd").html() );
+		$.pageChange(html,".imgAdd");
 	}
 }));

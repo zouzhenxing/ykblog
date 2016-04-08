@@ -3,7 +3,7 @@ var dataSource = function(){
 	  connectionLimit : 10,
 	  host            : 'localhost',
 	  user            : 'root',
-	  password        : '123456',
+	  password        : '',
 	  database        : 'ykblog',
 	  dateStrings     : true,
 	  multipleStatements: true

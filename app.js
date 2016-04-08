@@ -6,11 +6,15 @@ var session = require("express-session");
 var mysql = require("mysql");
 var path = require('path');
 var events = require("events");
+var wechat = require('wechat');
+var multer  = require('multer');
+var upload = multer({ dest: 'temp/' })
 //将模块放到全局
 global.log = log4js.getLogger("logInfo");
 global.mysql = mysql;
 global.events = events;
 global.rootPath = __dirname;
+global.wechat = wechat;
 
 //引入自定义模块
 var util = require("./util/util.js");
@@ -50,6 +54,9 @@ app.use("/admin",util.checkLogin); //使用中间件过滤所有admin下的请�
 app.use("/admin/admin",require("./router/adminRouter.js"));
 app.use("/admin/news",require("./router/newsRouter.js"));
 app.use("/API",require("./router/apiRouter.js"));
+app.use(express.query());
+app.use('/wechat',require("./router/wechat.js"));
+app.use('/upfiles',upload.array('upfile[]'),util.upfile);
 
 //设置静态目录
 app.use(express.static('public'));
