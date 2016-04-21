@@ -30,12 +30,26 @@
 第七课：[CSS基础]
 (http://v.qq.com/page/e/u/x/e01894ypeux.html)
 
-第八课：[网页前端之css样式篇1]
-(http://v.qq.com/page/u/a/6/u0190lwt5a6.html)
+第八课：[网页前端之css基础篇1]
+(http://v.qq.com/page/e/u/x/e01894ypeux.html)
 
-第九课：[网页前端之css样式篇2]
+第九课：[网页前端之css基础篇2]
 (http://v.qq.com/page/k/i/q/k01903mlkiq.html)
 
+第十课：[网页前端之css样式篇1]
+(http://v.qq.com/page/u/a/6/u0190lwt5a6.html)
+
+第十一课：[网页前端之css样式篇2]
+(http://v.qq.com/page/p/h/v/p0193913uhv.html)
+
+第十二课：[盒子模型]
+(http://v.qq.com/page/k/i/q/k01903mlkiq.html)
+
+第十三课：[浮动]
+(http://v.qq.com/page/k/i/q/k01903mlkiq.html)
+
+第十四课：[元素分类]
+(http://v.qq.com/page/k/i/q/k01903mlkiq.html)
 
 #**JavaScript部分**
 想学NodeJS?先学JS，都是JS，不要分前端后台！大神的任务是搞概念，码农的任务是写代码，大家说好的。
@@ -80,5 +94,10 @@
 第十三课：[nodejs静态服务器]
 (http://v.qq.com/page/s/b/4/s0191529nb4.html)
 
-持续更新，后续视频还在上传中
+第十四课：[动态服务器一]
+(http://v.qq.com/page/z/4/q/z0195ivw84q.html)
 
+第十五课：[动态服务器二]
+(http://v.qq.com/page/h/i/t/h01950tovit.html)
+
+持续更新，后续视频还在上传中
