@@ -100,4 +100,16 @@
 第十五课：[动态服务器二]
 (http://v.qq.com/page/h/i/t/h01950tovit.html)
 
+第十六课：[服务器模块化]
+(http://v.qq.com/page/s/i/d/s0196tf16id.html)
+
+第十七课：[依赖解耦与循环异步]
+(http://v.qq.com/page/e/n/j/e0197fmsinj.html)
+
+第十八课：[使用eventproxy简化流程]
+(http://v.qq.com/page/b/b/w/b0197cqaqbw.html)
+
+第十九课：[文件删除与ejs模板]
+(http://v.qq.com/page/m/c/j/m01976v4ycj.html)
+
 持续更新，后续视频还在上传中
